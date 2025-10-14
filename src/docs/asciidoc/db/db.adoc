@@ -70,6 +70,6 @@ a|Статус исполнения задачи.
 По умолначнию `todo`
 |===
 
-xref:../index.adoc[Назад]
+
 
 // for detailed explanations, see documentation on 'Tables/ Add Cells and Rows to a Table / Format Content by Cell' and 'Cross References/Document to Document Cross References'
