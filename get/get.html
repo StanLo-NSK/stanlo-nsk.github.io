@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.24">
-<title>Создание задчи (POST)</title>
+<title>Получение задачи (GET)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,13 +436,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Создание задчи (POST)</h1>
+<h1>Получение задачи (GET)</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Метод создания задачи.</p>
+<p>Метод получения задачи.</p>
 </div>
 </div>
 </div>
@@ -472,19 +472,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Заголовок</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Однострочный текст</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Идентификтор задачи</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Число</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Краткое описание задачи.</p>
-<p class="tableblock">Длинна не более 255 символов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Описание</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Многострочный текст</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Полное описание задачи, что необходимо сделать</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Идентификатор задачи</p></td>
 </tr>
 </tbody>
 </table>
@@ -499,13 +491,55 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>в случае успеха вернуть идентификатор созданной задачи (task_id);</p>
+<p>в случае успеха вернуть параметры задачи, указанные в таблице;</p>
 </li>
 <li>
 <p>иначе вернуть описание ошибки.</p>
 </li>
 </ul>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Параметры задач</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Параметр</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ключ</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Тип</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Не пустой</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Описание</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Заголовок задачи</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Однострочный текст</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Краткое описание задачи</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Описание</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Многострочный текст</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Полное описание задачи, что необходимо сделать</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Статус</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Однострочный текст</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Статус исполнения задачи.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -514,7 +548,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Алгоритм работы метода приведён на диаграмме.</p>
 </div>
-<div class="imageblock"><div class="content"><img class="plantuml" src="https://www.plantuml.com/plantuml/png/~1U9nbK4jEmp0KtFiKLbVD5UY27WG9MIG5gsr0ZK5Y5reGbTfLBr1nWr0bmdnYhZ3lHenJ5HKXRzxepSzlM3WpSxVJYUwP2sVlhBlNgJMNCpFjgMwdJh2L4W4xLFY4Hmr_m3ANzLcEdJmHrsXbXKRZcukIv2yq99Io6YWxqdriZccK_UD5gzyGiauJxQwodD8QLS8YBzI_HH23DSUg0y-oqF2wapUqR6Mn9qIVXd3Eoez47r6982Mvyd0mGyiNy7vaIBU-CyNutAR9G6MJ8cE9DlQCDJP_Km9_ucaNZNmyG90bXrV6UOhpr8vuokiRDUJCK_y0yP_WQW00" /></div></div>
+<div class="imageblock"><div class="content"><img class="plantuml" src="https://www.plantuml.com/plantuml/png/~1U9npA2v9B2efpStXuWApkBYiBio_iE_2xelD5zilxBZOTB57uSB-2nikDbpOS67FXQr0WOQBtGeNjWEvMu32G3NM83sJW58D5_O2TO5q09bRBso_s0mqfkTY4r1PapN8_Fm2BYw7rBmKe7K06FL3z000" /></div></div>
 <div class="paragraph">
 <p><a href="../index.html">Назад</a></p>
 </div>
